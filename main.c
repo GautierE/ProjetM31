@@ -22,8 +22,32 @@ double puissance(double p, double k)
 	return result;
 }
 
-void createPoisson(int n, double p){
+double exponentielle(int x){
+	double exp = 1.0;
+ 
+    for (int i = 1; i < 11; i++) {
+        exp = exp + (puissance(x,i)/factorielle(i));
+    }
+ 
+    return exp;
+}
 
+void createPoisson(int n, double p){
+	struct Coordonnees point;
+	point.x = malloc(n * sizeof(int));
+	point.y = malloc(n * sizeof(double));
+
+	double lambda = n*p;
+
+	for(int k=0; k<=n; k++)
+	{
+		point.x[k] = k;
+		point.y[k] = (exponentielle(-lambda)*puissance(lambda, k))/factorielle(k);
+		printf("x: %d y: %f\n", point.x[k], point.y[k]);
+	}
+
+	free(point.x);
+	free(point.y);
 }
 
 
@@ -37,6 +61,7 @@ void createBinomiale(int n, double p)
 	{
 		point.x[k] = k;
 		point.y[k] = (factorielle(n)/(factorielle(k)*factorielle(n-k)))*puissance(p, k)*puissance(1-p,n-k);
+		printf("x: %d y: %f\n", point.x[k], point.y[k]);
 	}
 
 	free(point.x);
