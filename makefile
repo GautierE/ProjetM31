@@ -1,3 +1,2 @@
-all: creationLoi
-creationLoi: creationLoi.c
-    gcc -o creationLoi creationLoi.c
+creation:
+	gcc -o creationLoi creationLoi.c
