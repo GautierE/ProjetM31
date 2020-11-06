@@ -1,7 +1,9 @@
+#include <stdlib.h>
+
 struct Coordonnees
 {
-	int* x = malloc(10 * sizeof(int));
-	int* y = malloc(10 * sizeof(int));
+	int* x;
+	double* y;
 
 	// if(a == NULL) {}     // malloc() was unable to allocate the memory, handle the
 	//                      // error and DO NOT use this pointer anymore
@@ -19,4 +21,4 @@ struct Coordonnees
 
 	// // don't forget to free the memory when you have finished:
 	// free(a);
-}
+};
