@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "main.h"
 
 double factorielle(double n)
@@ -22,16 +23,6 @@ double puissance(double p, double k)
 	return result;
 }
 
-double exponentielle(int x){
-	double exp = 1.0;
- 
-    for (int i = 1; i < 11; i++) {
-        exp = exp + (puissance(x,i)/factorielle(i));
-    }
- 
-    return exp;
-}
-
 void createPoisson(int n, double p){
 	struct Coordonnees point;
 	point.x = malloc(n * sizeof(int));
@@ -42,7 +33,7 @@ void createPoisson(int n, double p){
 	for(int k=0; k<=n; k++)
 	{
 		point.x[k] = k;
-		point.y[k] = (exponentielle(-lambda)*puissance(lambda, k))/factorielle(k);
+		point.y[k] = (exp(-lambda)*puissance(lambda, k))/factorielle(k);
 		printf("x: %d y: %f\n", point.x[k], point.y[k]);
 	}
 
