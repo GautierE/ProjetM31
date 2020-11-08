@@ -15,9 +15,9 @@ double factorielle(double n)
 // Methode permettant de récupérer les coordonnées de tous les points de la loi de Poisson à représenter
 void createPoisson(struct Coordonnees *valeurs_graphiques, int n, double p)
 {
-	// définit la taille du tableau avec n
-	valeurs_graphiques->x = malloc(n * sizeof(int));
-	valeurs_graphiques->y = malloc(n * sizeof(double));
+	// définit la taille du tableau en fonction de n
+	valeurs_graphiques->x = malloc((n+1) * sizeof(int));
+	valeurs_graphiques->y = malloc((n+1) * sizeof(double));
 
 	double lambda = n*p;
 
@@ -32,8 +32,9 @@ void createPoisson(struct Coordonnees *valeurs_graphiques, int n, double p)
 // Methode permettant de récupérer les coordonnées de tous les points de la loi Binomiale à représenter
 void createBinomiale(struct Coordonnees *valeurs_graphiques, int n, double p)
 {
-	valeurs_graphiques->x = malloc(n * sizeof(int));
-	valeurs_graphiques->y = malloc(n * sizeof(double));
+	// définit la taille du tableau en fonction de n
+	valeurs_graphiques->x = malloc((n+1) * sizeof(int));
+	valeurs_graphiques->y = malloc((n+1) * sizeof(double));
 
 	for(int k=0; k<=n; k++)
 	{
@@ -69,7 +70,7 @@ int main(int argc, char *argv[])
 
 	// "w" écrase l'ancien contenu du fichier
   	fp = fopen ("./valeurs_courbes.csv", "w");
-  	
+
 	/*if ( p >= 0,1 ) { printf(" Usage : p <= 0,1 \n"); exit(-1);}
 	if ( n*p >= 15 ) { printf(" Usage : np <= 15 \n"); exit(-1);}
 	if ( n <= 30 ) { printf(" Usage : n >= 30 \n"); exit(-1);}*/
