@@ -3,6 +3,7 @@
 #include <math.h>
 #include "main.h"
 
+// Fonction retournant !n avec n passé en paramètre
 double factorielle(double n)
 {
   if (n == 0)
@@ -11,8 +12,10 @@ double factorielle(double n)
     return(n * factorielle(n-1));
 }
 
+// Methode permettant de récupérer les coordonnées de tous les points de la loi de Poisson à représenter
 void createPoisson(struct Coordonnees *valeurs_graphiques, int n, double p)
 {
+	// définit la taille du tableau avec n
 	valeurs_graphiques->x = malloc(n * sizeof(int));
 	valeurs_graphiques->y = malloc(n * sizeof(double));
 
@@ -26,6 +29,7 @@ void createPoisson(struct Coordonnees *valeurs_graphiques, int n, double p)
 	}
 }
 
+// Methode permettant de récupérer les coordonnées de tous les points de la loi Binomiale à représenter
 void createBinomiale(struct Coordonnees *valeurs_graphiques, int n, double p)
 {
 	valeurs_graphiques->x = malloc(n * sizeof(int));
@@ -39,13 +43,16 @@ void createBinomiale(struct Coordonnees *valeurs_graphiques, int n, double p)
 	}
 }
 
+// Methode qui stocke les différentes coordonnées dans un fichier .csv
 void sauvegarde(FILE *fp, struct Coordonnees valeurs_graphiques, int taille_tableau)
 {
+	// "a" permet d'ajouter du contenu au fichier sans écraser le contenu déjà présent
   fp = freopen ("./valeurs_courbes.csv", "a", fp);
 
   for(int i=0; i<=taille_tableau; i++)
   {
-    fprintf(fp, "%d \t %f \n", valeurs_graphiques.x[i],  valeurs_graphiques.y[i]);
+  	// La tabulation est le séparateur par défaut des tableurs
+    fprintf(fp, "%d \t %f\n", valeurs_graphiques.x[i],  valeurs_graphiques.y[i]);
   }
 
   fprintf(fp, "\n\n\n\n");
@@ -60,7 +67,9 @@ int main(int argc, char *argv[])
 
 	FILE *fp;
 
+	// "w" écrase l'ancien contenu du fichier
   	fp = fopen ("./valeurs_courbes.csv", "w");
+  	
 	/*if ( p >= 0,1 ) { printf(" Usage : p <= 0,1 \n"); exit(-1);}
 	if ( n*p >= 15 ) { printf(" Usage : np <= 15 \n"); exit(-1);}
 	if ( n <= 30 ) { printf(" Usage : n >= 30 \n"); exit(-1);}*/
