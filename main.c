@@ -25,7 +25,6 @@ void createPoisson(struct Coordonnees *valeurs_graphiques, int n, double p)
 	{
 		valeurs_graphiques->x[k] = k;
 		valeurs_graphiques->y[k] = (exp(-lambda)*pow(lambda, k))/factorielle(k);
-		//printf("x: %d y: %f\n", valeurs_graphiques.x[k], valeurs_graphiques.y[k]);
 	}
 }
 
@@ -40,7 +39,6 @@ void createBinomiale(struct Coordonnees *valeurs_graphiques, int n, double p)
 	{
 		valeurs_graphiques->x[k] = k;
 		valeurs_graphiques->y[k] = (factorielle(n)/(factorielle(k)*factorielle(n-k)))*pow(p, k)*pow(1-p,n-k);
-		//printf("x: %d y: %f\n", valeurs_graphiques->x[k], valeurs_graphiques->y[k]);
 	}
 }
 
@@ -70,10 +68,6 @@ int main(int argc, char *argv[])
 
 	// "w" écrase l'ancien contenu du fichier
   	fp = fopen ("./valeurs_courbes.csv", "w");
-
-	/*if ( p >= 0,1 ) { printf(" Usage : p <= 0,1 \n"); exit(-1);}
-	if ( n*p >= 15 ) { printf(" Usage : np <= 15 \n"); exit(-1);}
-	if ( n <= 30 ) { printf(" Usage : n >= 30 \n"); exit(-1);}*/
 
 	struct Coordonnees valeurs_binomiale;
 	struct Coordonnees valeurs_poisson;
