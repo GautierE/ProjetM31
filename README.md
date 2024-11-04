@@ -1,2 +1,2 @@
 # ProjetM31
-Simulations showing the convergence of some binomial distribution laws to Poisson distribution laws.
+Study project in C demonstrating the convergence of certain binomial distributions towards Poisson distributions.
